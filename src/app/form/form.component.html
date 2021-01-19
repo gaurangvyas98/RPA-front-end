@@ -1,0 +1,89 @@
+<form class="formStyle" (ngSubmit)="onSubmit()" #requestForm="ngForm">
+    <div class="mb-3">
+        <label for="name" class="form-label">Automation Process Name</label>
+        <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="request.name" required>
+        <span *ngIf="name.invalid && name.touched" class="errorStyle">Automation name is required</span>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Requestor Email</label>
+        <input type="email" #email="ngModel" class="form-control" name="email" [(ngModel)]="request.email" required>
+        <span *ngIf="email.invalid && email.touched" class="errorStyle">Requestor Email required</span>
+    </div>
+    <div class="mb-3">
+        <label for="selectedBusiness" class="form-label">Business Functions</label>
+        <select class="form-select" (change)="selectBusinessOption($event.target.value)"
+                [(ngModel)]="selectedBusiness" name="selectedBusiness" #sb="ngModel" required>
+            <option [value]="i" *ngFor="let i of businessFunctionsArray">{{i}}</option>
+        </select>
+        <span *ngIf="sb.invalid && sb.touched" class="errorStyle">Select business function</span>
+    </div> 
+
+    <div class="mb-3">
+        <label for="region" class="form-label">Region</label>
+        <select class="form-select" (change)="selectRegionOption($event.target.value)"
+                [(ngModel)]="selectedRegion" name="selectedRegion">
+            <option [value]="i" *ngFor="let i of regionArray">{{i}}</option>
+         </select>
+    </div> 
+
+    <div class="mb-3">
+        <label for="statement" class="form-label">Problem Statement</label>
+        <input type="text" class="form-control" name="problemStatement" #statement="ngModel" [(ngModel)]="request.problemStatement" required>
+        <span *ngIf="statement.invalid && statement.touched" class="errorStyle">Problem Statement required</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="details" class="form-label">Project Details</label>
+        <input type="text" class="form-control" name="projectDetails" #details="ngModel" [(ngModel)]="request.projectDetails" required>
+        <span *ngIf="statement.invalid && statement.touched" class="errorStyle">Project Details required</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Start Date</label>
+        <input type="date" class="form-control" name="startDate" id="date" [(ngModel)]="request.startDate">
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Number of bot steps process</label><br>
+        <input type="number" name="steps"  min="1" max="10" #noOfStepsInput required>
+        <button (onClick)="onAddSteps(noOfStepsInput)">Add</button>
+        <div *ngFor="let step of totalNumberOfstepsArray;let i=index">
+            <input type="text" placeholder="step {{step}}" > <p>{{stepsValue}}</p>
+        </div>
+    </div>
+   
+    <button type="submit" class="btn btn-primary" [disabled]="!requestForm.valid" routerLink="home">Submit</button>
+</form>
+
+
+
+
+
+
+
+
+<!-- pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" -->
+
+
+
+  <!-- <select class="form-select" (change)="selectOption($event.target.value)"
+     [(ngModel)]="selected"[(ngModel)]="businessArray">
+        <option selected>Select Organisation Name</option>
+        <option *ngFor = "let i of businessArray" [value]="i">{{i}}</option> 
+        <option [ngValue]="orgName[0]">TCS</option>
+        <option [ngValue]="orgName[1]">YOUTUBE</option>
+        <option [ngValue]="orgName[2]">WWE</option>
+        <option [ngValue]="orgName[3]">GOOGLE</option>
+    </select> -->
+    <!-- <div>
+        <select (change)="selectOption($event.target.value)"
+        [(ngModel)]="selected" [ngModelOptions]="{standalone: true}">
+        <option [value]="item.id" *ngFor="let item of items">{{item.name}}</option>
+         </select>
+      </div>  -->
+      <!-- <select [(ngModel)]="selectedBusiness">
+        <option *ngFor="let i of businessArray">
+           {{i}}
+        </option>
+     </select> -->
+     <!-- <button (click)="print()">Click me</button> -->
+     

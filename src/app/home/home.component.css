@@ -1,0 +1,11 @@
+.overview-div{
+    display: flex;
+    justify-self: start;
+    flex-direction: row;
+}
+.appName-region{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}

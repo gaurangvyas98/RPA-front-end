@@ -1,0 +1,84 @@
+<div class="row" style="margin: 2% auto;">
+    <div class="col-4" style="display: flex; justify-content: center; align-items: flex-start;">
+        <button  type="button" class="btn btn-warning" (click)="open(mymodal)">
+            Create New Request
+        </button>
+    </div>
+    <div class="col-8" *ngFor="let request of requests;let i=index">
+        <h2 class="mb-4">{{request.name}}</h2>
+        <h5 class="mb-2" >Automation Overview</h5>
+        <p class="mb-3">{{request.projectDetails}}</p>
+        <div class="row mb-4 ">
+            <div class="col appName-region mr-3"><h5>Application Name : </h5><p>{{request.businessFunction}}</p></div>
+            <div class="col appName-region"><h5>Region : </h5><p>{{request.region}}</p></div>
+        </div>
+        <h5 class="mb-2">Benefits and General Information</h5>
+        <p class="mb-4">{{request.projectDetails}}</p>
+
+    </div>
+</div>
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Request Form</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     <app-form></app-form>
+    </div>
+    <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div> -->
+  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- This bot will take list of invoices that are ready for payment and updates the oracle system with additional details. The updated data then be used for systematically processing the payments batch-wise. This automation process will be used globally and will be utilised by the overall intercompany COE  as well as external payable teams for mass updates. -->
+
+<!-- <div class="row" style="margin: 2% auto;">
+    <button type="button" class="btn btn-primary" (click)="routeToForm()">Create New Request</button>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Business Function</th>
+                <th>Problem Statement</th>
+                <th>Start Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of requests" (click)="viewRequest(i.id)">
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.businessFunction}}</td>
+                <td>{{i.problemStatement}}</td>               
+                <td>{{i.startDate}}</td>               
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+ 
+ <!-- <td>
+    <button (click)= "updateEmployee(employee.id)" class="btn btn-info">Update</button>
+    <button (click)= "deleteEmployee(employee.id)" class="btn btn-danger mx-2">Delete</button>
+    <button (click)= "viewEmployee(employee.id)" class="btn btn-warning mx-2">View</button>
+</td> -->
